@@ -35,7 +35,7 @@ public class Producto {
 	private long codigo;
 	
 	@NotBlank(message="Debe tener un Nombre")
-	@Size(min=5,max=100,message = "Debe ingresar de 5 a 100 caracteres")
+	@Size(min=2,max=100,message = "Debe ingresar de 2 a 100 caracteres")
 	@Column(name = "prod_nombre", length = 100)
 	private String nombre;
 	
@@ -45,7 +45,7 @@ public class Producto {
 	private double precio;
 	
 	@NotBlank(message="Debe tener nombre de una Marca")
-	@Size(min=8,max=20,message = "Debe ingresar de 8 a 20 caracteres")
+	@Size(min=2,max=20,message = "Debe ingresar de 2 a 20 caracteres")
 	@Column(name = "prod_marca", length = 20)
 	private String marca;
 	

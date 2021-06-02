@@ -29,7 +29,7 @@ import org.springframework.stereotype.Component;
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		private Long id;
 		
-		@Min(value = 3,message = "La cantidad debe ser mayor o igual a 1 digitos")
+		@Min(value = 1,message = "La cantidad debe ser mayor o igual a 1 digitos")
 		@Max(value = 1000,message = "La cantidad debe ser menor o igual a 1000 digitos")
 		@Column(name = "com_cantidad")
 		private int cantidad;
