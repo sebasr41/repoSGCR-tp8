@@ -1,48 +1,50 @@
 package ar.edu.unju.fi.tp8.model;
 
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+	
+	@Component
+	@Entity
+	@Table(name = "COMPRAS")
+	public class Compra {
+		
+		@Id
+		@GeneratedValue(strategy = GenerationType.IDENTITY)
+		private Long id;
+		
+		@Min(value = 3,message = "La cantidad debe ser mayor o igual a 1 digitos")
+		@Max(value = 1000,message = "La cantidad debe ser menor o igual a 1000 digitos")
+		@Column(name = "com_cantidad")
+		private int cantidad;
+		
+		
+		@Column(name = "com_total")
+		private double total;
+		
+		
+		@Autowired
+		@ManyToOne
+		@JoinColumn(name = "pro_id", nullable = false, updatable = false)
+		private Producto producto;
 
-@Component
-@Entity
-@Table(name = "COMPRAS")
-public class Compra {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-	@Column(name = "com_cantidad")
-	private int cantidad;
-	
-	@Column(name = "com_total")
-	private double total;
-	
-	@Autowired
-	@ManyToOne
-	@JoinColumn(name = "pro_id", nullable = false, updatable = false)
-	private Producto producto;
-	
-	
-
-	
-
-
 
 	public Compra() {
 		// TODO Auto-generated constructor stub

@@ -10,64 +10,94 @@ import java.time.temporal.ChronoUnit;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Size;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
-@Component
-@Entity
-@Table(name = "CLIENTES")
-public class Cliente {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
+	@Component
+	@Entity
+	@Table(name = "CLIENTES")
+	public class Cliente {
+		
+		@Id
+		@GeneratedValue(strategy = GenerationType.IDENTITY)
+		private Long id;
+		
+		@Valid
+		@Autowired
+		@OneToOne(cascade = CascadeType.ALL)
+		@JoinColumn(name = "cue_id")
+		private Cuenta cuenta;
+		
+		@NotBlank(message="Debe seleccionar una opcion")
+		@Column(name = "cli_tipoDocumento")
+		private String tipoDocumento;
+		
+		@Min(value = 7,message = "El DNI debe ser mayor o igual a 7 digitos")
+		@Max(value = 9,message = "El DNI debe ser menor o igual a 9 digitos")
+		@Column(name = "cli_nroDocumento")
+		private int nroDocumento;
+		
+		@NotBlank(message="Debe ingresar su Nombre y Apellido")
+		@Size(min=8,max=50,message = "Debe ingresar de 8 a 50 caracteres")
+		@Column(name = "cli_nombreApellido")
+		private String nombreApellido;
+		
+		@NotBlank(message = "Debe ingresar un E-mail")
+		@Email(message = "Ingrese un E-mail valido")
+		@Column(name="cli_email")
+		private String email;
+		
+		@NotBlank(message="Debe ingresar una contraseña")
+		@Size(min=8,max=20,message = "Debe ingresar de 8 a 20 caracteres")
+		@Column(name = "cli_password")
+		private String password;
+		
+		@NotNull(message = "Debe ingresar una fecha valida")
+		@Past
+		@DateTimeFormat(pattern = "yyyy-MM-dd")
+		@Column(name = "cli_fechaNacimiento") 
+		private LocalDate fechaNacimiento;
+		
+		@Min(value = 3,message = "El Codigo de Area debe ser mayor o igual a 3 digitos")
+		@Max(value = 5,message = "El Codigo de Area debe ser menor o igual a 5 digitos")
+		@Column(name="cli_codigoAreaTelefono")
+		private int codigoAreaTelefono;
+		
+		@Min(value = 6,message = "El numero de telefono debe ser mayor o igual a 6 digitos")
+		@Max(value = 9,message = "El numero de telefono debe ser menor o igual a 9 digitos")
+		@Column(name="cli_nroTelefono")
+		private int nroTelefono;
+		
+		@PastOrPresent
+		@NotNull(message = "Debe ingresar una fecha valida")
+		@DateTimeFormat(pattern = "yyyy-MM-dd")
+		@Column(name="cli_fechaUltimaCompra")
+		private LocalDate fechaUltimaCompra;
+
+	/***
 	@Autowired
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "cue_id")
-	private Cuenta cuenta;
-	
-	@Column(name = "cli_tipoDocumento")
-	private String tipoDocumento;
-	
-	@Column(name = "cli_nroDocumento")
-	private int nroDocumento;
-	
-	@Column(name = "cli_nombreApellido")
-	private String nombreApellido;
-	
-	@Column(name="cli_email")
-	private String email;
-	
-	@Column(name = "cli_password")
-	private String password;
-	
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Column(name = "cli_fechaNacimiento") 
-	private LocalDate fechaNacimiento;
-	
-	@Column(name="cli_codigoAreaTelefono")
-	private int codigoAreaTelefono;
-	
-	@Column(name="cli_nroTelefono")
-	private int nroTelefono;
-	
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Column(name="cli_fechaUltimaCompra")
-	private LocalDate fechaUltimaCompra;
-	
-
-	
-
+	@OneToMany(mappedBy = "cliente")
+	private List<Compra> compras = new ArrayList<Compra>();
+	 * 
+	 */	
 
 	public Cliente() {
 	}
