@@ -18,8 +18,10 @@
   		<div class="col-12 col-sm-12 col-md-8 mb-3">
   			<h2 class="h2 pb-3">Compra</h2>
             <form th:action="@{/compra-guardar}" method="POST" th:object="${compra}">            	
-            	<input type="hidden" th:field="*{id}" />                       	            
-            	<input type="hidden" th:field="*{producto.id}" >          	   
+            	             <input type="hidden" th:field="*{id}" /> 
+          
+            	             
+            	            <input type="hidden" th:field="*{producto.id}" >          	   
           
         		<div class="form-group">
 	                <label for="producto">Nombre del Producto</label>
@@ -29,15 +31,11 @@
 	                 th:text="${prod.nombre}"	                
 	                 th:selected="false"/>
 	                </select>
-	                <!-- Muestra mensajes de error de validación -->
-	                <div class="form-text text-danger col-sm-10 offset-2" th:if="${#fields.hasErrors('producto.codigo')}" th:errors="*{producto.codigo}"></div>
         		</div>                              
                 
         		<div class="form-group">
 	                <label for="cantidad">Cantidad</label>
 	                <input class="form-control" type="number" id="cantidad" th:field="*{cantidad}">
-	                 <!-- Muestra mensajes de error de validación -->
-	                <div class="form-text text-danger col-sm-10 offset-2" th:if="${#fields.hasErrors('cantidad')}" th:errors="*{cantidad}"></div>
         		</div>        		        		                      
         		        		                                                         	
                 <input class="btn btn-primary" type="submit" value="Guardar">
