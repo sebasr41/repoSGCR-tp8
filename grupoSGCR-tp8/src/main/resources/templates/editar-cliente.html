@@ -23,6 +23,8 @@
 	       <div class="form-group">
 	                <label for="nombre">Nombre y Apellido</label>
 	                <input class="form-control" type="text" id="nombre" th:field="*{nombreApellido}" placeholder="Ingrese nombre y apellido">
+	                <!-- Muestra mensajes de error de validación -->
+	                <div class="form-text alert-danger col-sm-10 " th:if="${#fields.hasErrors('nombreApellido')}" th:errors="*{nombreApellido}"></div>
             	</div>
             	
                 <div class="form-group">
@@ -32,40 +34,56 @@
 	                    <option value="dni">DNI</option>
 	                    <option value="pasaporte">Pasaporte</option>
 	                </select>
+	                <!-- Muestra mensajes de error de validación -->
+	                <div class="form-text alert-danger col-sm-10 " th:if="${#fields.hasErrors('tipoDocumento')}" th:errors="*{tipoDocumento}"></div>
                 </div>
                 
         		<div class="form-group">
 	                <label for="dni">N° de DNI</label>
 	                <input class="form-control" type="number" id="dni" th:field="*{nroDocumento}">
+	                <!-- Muestra mensajes de error de validación -->
+	                <div class="form-text alert-danger col-sm-10 " th:if="${#fields.hasErrors('nroDocumento')}" th:errors="*{nroDocumento}"></div>
         		</div>
         		
         		<div class="form-group">
 	                <label for="email">E-mail</label>
 	                <input class="form-control" type="email" id="email" th:field="*{email}" placeholder="Ingrese su email">
+	                <!-- Muestra mensajes de error de validación -->
+	                <div class="form-text alert-danger col-sm-10 " th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
         		</div>
                 <div class="form-group">
 	                <label for="password">Password</label>
-	                <input class="form-control" type="password" id="password" th:field="*{password}" placeholder="Ingrese su password">                
+	                <input class="form-control" type="password" id="password" th:field="*{password}" placeholder="Ingrese su password">
+	                <!-- Muestra mensajes de error de validación -->
+	                <div class="form-text alert-danger col-sm-10 " th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>                
                 </div>
         
                 <div class="form-group">
 	                <label for="fechaNacimiento">Fecha Nacimiento</label>
 	                <input class="form-control" type="date" id="fechaNacimiento" th:field="*{fechaNacimiento}">
+	                <!-- Muestra mensajes de error de validación -->
+	                <div class="form-text alert-danger col-sm-10 " th:if="${#fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}"></div>
                 </div>
         		
         		<div class="form-group">
 	                <label for="codArea">Cód. Area</label>
-	                <input class="form-control" type="number" id="codArea" th:field="*{codigoAreaTelefono}">        			
+	                <input class="form-control" type="number" id="codArea" th:field="*{codigoAreaTelefono}">
+	                <!-- Muestra mensajes de error de validación -->
+	                <div class="form-text alert-danger col-sm-10 " th:if="${#fields.hasErrors('codigoAreaTelefono')}" th:errors="*{codigoAreaTelefono}"></div>        			
         		</div>        
                 
                 <div class="form-group">
                 <label for="nroTelefono">Número Teléfono</label>
-                <input class="form-control" type="number" id="nroTelefono" th:field="*{nroTelefono}">                
+                <input class="form-control" type="number" id="nroTelefono" th:field="*{nroTelefono}">
+                <!-- Muestra mensajes de error de validación -->
+	                <div class="form-text alert-danger col-sm-10 " th:if="${#fields.hasErrors('nroTelefono')}" th:errors="*{nroTelefono}"></div>                
                 </div>            
                 
             	<div class="form-group">
 	                <label for="fechaUltimaCompra">Fecha de última compra</label>
 	                <input class="form-control" type="date" id="fechaUltimaCompra" th:field="*{fechaUltimaCompra}">            	
+	                <!-- Muestra mensajes de error de validación -->
+	                <div class="form-text alert-danger col-sm-10 " th:if="${#fields.hasErrors('fechaUltimaCompra')}" th:errors="*{fechaUltimaCompra}"></div>
             	</div>
             	
             	<!-- ******************Oculto*****************  -->
@@ -73,11 +91,15 @@
         		<div class="form-group oculto">
 	                <label for="saldo">Saldo</label>
 	                <input class="form-control" type="number" id="saldo" th:field="*{cuenta.saldo}">
+	                <!-- Muestra mensajes de error de validación -->
+	                <div class="form-text alert-danger col-sm-10 " th:if="${#fields.hasErrors('cuenta.saldo')}" th:errors="*{cuenta.saldo}"></div>
         		</div>
         		
         		<div class="form-group oculto">
 	                <label for="fechaCreacion">Fecha de creación</label>
 	                <input class="form-control" type="date" id="fechaCreacion" th:field="*{cuenta.fechaCreacion}">
+	                <!-- Muestra mensajes de error de validación -->
+	                <div class="form-text alert-danger col-sm-10 " th:if="${#fields.hasErrors('cuenta.fechaCreacion')}" th:errors="*{cuenta.fechaCreacion}"></div>
         		</div>
         		
         		 <div class="form-group oculto">
@@ -87,6 +109,8 @@
 	                    <option value="Activa">Activa</option>
 	                    <option value="Inactiva	">Inactiva</option>
 	                </select>
+	                <!-- Muestra mensajes de error de validación -->
+	                <div class="form-text alert-danger col-sm-10 " th:if="${#fields.hasErrors('cuenta.estado')}" th:errors="*{cuenta.estado}"></div>
                 </div>
                  <!-- ******************Oculto*****************  -->
         		
