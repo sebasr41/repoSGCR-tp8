@@ -27,35 +27,35 @@
 				        <label for="codigo">Código del producto</label>
 				        <input class="form-control" type="number" id="codigo" th:field="*{codigo}">
 				        <!-- Muestra mensajes de error de validación -->
-	                	<div class="form-text text-danger col-sm-10 offset-2" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></div>			    	
+	                	<div class="form-text alert-danger col-sm-10 " th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></div>			    	
 			    	</div>
 			        
 			        <div class="form-group">
 				        <label for="nombre">Nombre del producto</label>
 				        <input class="form-control" type="text" id="nombre" th:field="*{nombre}" placeholder="Ingrese nombre" >
 				        <!-- Muestra mensajes de error de validación -->
-	                	<div class="form-text text-danger col-sm-10 offset-2" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+	                	<div class="form-text alert-danger col-sm-10 " th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
 			        </div>
 			        
 			        <div class="form-group">
 				        <label for="precio">Precio del producto</label>
 				        <input class="form-control" type="number" id="precio" th:field="*{precio}" step="any" >
 				        <!-- Muestra mensajes de error de validación -->
-	                	<div class="form-text text-danger col-sm-10 offset-2" th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></div>
+	                	<div class="form-text alert-danger col-sm-10 " th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></div>
 			        </div>
 			        
 			        <div class="form-group">
 				        <label for="marca">Marca del producto</label>
 				        <input class="form-control" type="text" id="marca" th:field="*{marca}" placeholder="Ingrese marca" >
 				        <!-- Muestra mensajes de error de validación -->
-	                	<div class="form-text text-danger col-sm-10 offset-2" th:if="${#fields.hasErrors('marca')}" th:errors="*{marca}"></div>
+	                	<div class="form-text alert-danger col-sm-10 " th:if="${#fields.hasErrors('marca')}" th:errors="*{marca}"></div>
 			        </div>
 			        
 			        <div class="form-group">
 				        <label for="stock">Stock del producto</label>
 				        <input class="form-control" type="number" id="stock" th:field="*{stock}" >
 				        <!-- Muestra mensajes de error de validación -->
-	                	<div class="form-text text-danger col-sm-10 offset-2" th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}"></div>
+	                	<div class="form-text alert-danger col-sm-10 " th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}"></div>
 			        </div>
 			        
 			        <input class="btn btn-primary" type="submit" value="Guardar">

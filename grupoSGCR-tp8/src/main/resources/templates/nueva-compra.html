@@ -30,14 +30,14 @@
 	                 th:selected="false"/>
 	                </select>
 	                <!-- Muestra mensajes de error de validación -->
-	                <div class="form-text text-danger col-sm-10 offset-2" th:if="${#fields.hasErrors('producto.codigo')}" th:errors="*{producto.codigo}"></div>
+	                <div class="form-text alert-danger col-sm-10 " th:if="${#fields.hasErrors('producto.codigo')}" th:errors="*{producto.codigo}"></div>
         		</div>                              
                 
         		<div class="form-group">
 	                <label for="cantidad">Cantidad</label>
 	                <input class="form-control" type="number" id="cantidad" th:field="*{cantidad}">
 	                 <!-- Muestra mensajes de error de validación -->
-	                <div class="form-text text-danger col-sm-10 offset-2" th:if="${#fields.hasErrors('cantidad')}" th:errors="*{cantidad}"></div>
+	                <div class="form-text alert-danger col-sm-10 " th:if="${#fields.hasErrors('cantidad')}" th:errors="*{cantidad}"></div>
         		</div>        		        		                      
         		        		                                                         	
                 <input class="btn btn-primary" type="submit" value="Guardar">
