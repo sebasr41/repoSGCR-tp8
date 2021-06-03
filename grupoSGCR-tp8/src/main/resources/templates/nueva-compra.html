@@ -17,7 +17,8 @@
   		<div class="row my-3">
   		<div class="col-12 col-sm-12 col-md-8 mb-3">
   			<h2 class="h2 pb-3">Compra</h2>
-            <form th:action="@{/compra-guardar}" method="POST" th:object="${compra}">            	
+  			
+            <form th:action="@{/compra-guardar}" method="POST" th:object="${compra}" th:if="${bandera}">            	
             	<input type="hidden" th:field="*{id}" />                       	            
             	<input type="hidden" th:field="*{producto.id}" >          	   
           
@@ -43,6 +44,11 @@
                 <input class="btn btn-primary" type="submit" value="Guardar">
             </form>
   		</div>
+  		
+  		<div th:unless="${bandera}">
+		   	<h3 class="h3">Primero debe registrar un producto</h3>
+		   	<a class="btn btn-primary my-2" role="button" href="/producto">Ir al formulario de producto </a>	
+		</div>
   		
   			<!-- Publcity -->
    	 		<div th:replace="layouts/aside :: aside" ></div>
