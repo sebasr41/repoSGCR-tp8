@@ -50,8 +50,13 @@ public class CompraController {
 	@GetMapping("/compra")
 	public String getCompraPage(Model model) {
 		model.addAttribute("compra", compra);	
-		model.addAttribute("clientes", clienteService.obtenerClientes());
 		model.addAttribute("productos", productoService.obtenerProductos());
+		if(productoService.obtenerProductos().isEmpty()) {
+			model.addAttribute("bandera", false);
+		}else {
+			model.addAttribute("bandera", true);
+
+		}
 		return "nueva-compra";
 	}
 	@PostMapping("/compra-guardar")
@@ -59,6 +64,10 @@ public class CompraController {
 		ModelAndView modelView;
 		if(resultadoValidacion.hasErrors()) {
 		modelView= new ModelAndView("nueva-compra"); 
+		List<Producto> productos = productoService.obtenerProductos();
+		modelView.addObject("compra", compra);
+		modelView.addObject("productos", productos);
+		modelView.addObject("bandera", true);
 		return modelView;
 		
 	
@@ -66,17 +75,17 @@ public class CompraController {
 		
 		else {
 			LOGGER.info("anda? :" + compra);
-		modelView = new ModelAndView("compras");
+		ModelAndView model = new ModelAndView("resultado-compra");
 		
 		Producto producto = productoService.getProductoPorCodigo(compra.getProducto().getCodigo());
 		compra.setProducto(producto);
-		
+		Compra compran = null;
 		compraService.guardarCompra(compra);
-		modelView.addObject("productos", compraService.getAllCompras());
+		model.addObject("compras", compraService.getAllCompras());
+		model.addObject("comprab",compra);
+		return model;
+		}		
 		
-		}
-					
-		return modelView;
 	}
 	@GetMapping("/compra-ultimo")
 	public ModelAndView getComprasPage() {
