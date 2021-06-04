@@ -11,6 +11,7 @@
     <title>Compras</title>
 </head>
 <body>
+
 	<div class="container">
 		<!-- Header -->
   		<div th:replace="layouts/header :: header" ></div>
@@ -24,9 +25,9 @@
           
         		<div class="form-group">
 	                <label for="producto">Nombre del Producto</label>
-	                <select id="producto" th:field="*{producto.codigo}" class="form-control form-control-sm">
+	                <select id="producto" th:field="*{producto.stock}" class="form-control form-control-sm">
 	                <option th:each="prod : ${productos}"
-	                 th:value="${prod.codigo}"
+	                 th:value="${prod.id}"
 	                 th:text="${prod.nombre}"	                
 	                 th:selected="false"/>
 	                </select>
