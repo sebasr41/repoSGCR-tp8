@@ -17,18 +17,12 @@
 		<div class="row my-3">
 			<div class="col-12 col-sm-12 col-md-8 mb-3">
 			
-				<!-- Form -->
+				<!-- Form -->							
 				
 			    <h2 class="h2 pb-3">Alta de un nuevo producto</h2>
 			    <form th:action="@{/producto-guardar}" method="POST" th:object="${producto}" >
 			    
-			    	  <input type="hidden" th:field="*{id}" />
-			    	<div class="form-group">
-				        <label for="codigo">Código del producto</label>
-				        <input class="form-control" type="number" id="codigo" th:field="*{codigo}">
-				        <!-- Muestra mensajes de error de validación -->
-	                	<div class="form-text alert-danger col-md-12 rounded-bottom " th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></div>			    	
-			    	</div>
+			    	<input type="hidden" th:field="*{id}" />			    	
 			        
 			        <div class="form-group">
 				        <label for="nombre">Nombre del producto</label>
