@@ -33,11 +33,12 @@ public class CompraController {
 	
 	private static final Log LOGGER = LogFactory.getLog(CompraController.class);
 	
+	//@Qualifier("productoUtilService")
 	@Qualifier("productoServiceMysql")
 	@Autowired
 	private IProductoService productoService;
 	
-	
+	//@Qualifier("compraUtilService")
 	@Qualifier("compraServiceMysql")
 	@Autowired
 	private ICompraService compraService;
@@ -76,8 +77,10 @@ public class CompraController {
 			LOGGER.info("anda? :" + compra);
 		ModelAndView model = new ModelAndView("resultado-compra");
 		
-		Producto producto = productoService.getProductoPorCodigo(compra.getProducto().getCodigo());
-		compra.setProducto(producto);
+		Optional<Producto> producto = productoService.getProductoPorId((long)compra.getProducto().getStock());
+		producto.ifPresent(compra::setProducto);
+		
+		//compra.setProducto(producto);
 		compraService.guardarCompra(compra);
 		model.addObject("compras", compraService.getAllCompras());
 		model.addObject("comprab",compra);
@@ -100,7 +103,7 @@ public class CompraController {
 	}
 	@GetMapping("/compra-eliminar-{id}")
 	public ModelAndView getCompraEliminarPage(@PathVariable (value = "id")Long id) {
-		//									
+		//									redirect recarga la lista de cuentas
 		ModelAndView modelView = new ModelAndView("redirect:/compra-lista");
 		compraService.eliminarCompra(id);
 		return modelView;
@@ -114,6 +117,7 @@ public class CompraController {
 		Optional<Compra> compra = compraService.getCompraPorId(id);
 		
 		List<Producto> productos = productoService.obtenerProductos();
+		modelView.addObject("bandera", true);
 		modelView.addObject("compra", compra);
 		modelView.addObject("productos", productos);
 		
@@ -129,4 +133,3 @@ public class CompraController {
 	    return "compras";
 	}
 }
-
