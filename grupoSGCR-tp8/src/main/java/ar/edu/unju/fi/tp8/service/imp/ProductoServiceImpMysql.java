@@ -41,12 +41,6 @@ public class ProductoServiceImpMysql implements IProductoService {
 	}
 
 
-	@Override
-	public Producto getProductoPorCodigo(Long codigo) {
-		// TODO Auto-generated method stub
-		Producto producto = productoRepository.findByCodigo(codigo);
-		return producto;
-	}
 
 
 	@Override

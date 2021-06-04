@@ -15,7 +15,6 @@ public interface IProductoService {
     
     public List<Producto> obtenerProductos();
     
-    public Producto getProductoPorCodigo(Long codigo);
 
 	public void eliminarProducto(Long id);
 
