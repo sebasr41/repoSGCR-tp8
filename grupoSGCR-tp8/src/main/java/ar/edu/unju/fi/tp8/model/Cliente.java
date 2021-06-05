@@ -50,8 +50,8 @@ import org.springframework.stereotype.Component;
 		@Column(name = "cli_tipoDocumento")
 		private String tipoDocumento;
 		
-		@Min(value = 7,message = "El DNI debe ser mayor o igual a 7 digitos")
-		@Max(value = 9,message = "El DNI debe ser menor o igual a 9 digitos")
+		@Min(value = 1000000,message = "El DNI debe ser mayor o igual a 1000000 digitos")
+		@Max(value = 999999999,message = "El DNI debe ser menor o igual a 999999999 digitos")
 		@Column(name = "cli_nroDocumento")
 		private int nroDocumento;
 		
@@ -76,13 +76,13 @@ import org.springframework.stereotype.Component;
 		@Column(name = "cli_fechaNacimiento") 
 		private LocalDate fechaNacimiento;
 		
-		@Min(value = 3,message = "El Codigo de Area debe ser mayor o igual a 3 digitos")
-		@Max(value = 5,message = "El Codigo de Area debe ser menor o igual a 5 digitos")
+		@Min(value = 100,message = "El Codigo de Area debe ser mayor o igual a 3 digitos")
+		@Max(value = 99999,message = "El Codigo de Area debe ser menor o igual a 5 digitos")
 		@Column(name="cli_codigoAreaTelefono")
 		private int codigoAreaTelefono;
 		
-		@Min(value = 6,message = "El numero de telefono debe ser mayor o igual a 6 digitos")
-		@Max(value = 9,message = "El numero de telefono debe ser menor o igual a 9 digitos")
+		@Min(value = 100000,message = "El numero de telefono debe ser mayor o igual a 100000 digitos")
+		@Max(value = 999999999,message = "El numero de telefono debe ser menor o igual a 999999999 digitos")
 		@Column(name="cli_nroTelefono")
 		private int nroTelefono;
 		
