@@ -29,10 +29,6 @@ public class Producto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Min(value = 1,message = "El codigo debe ser mayor a 1")
-	@Max(value = 1000,message = "El codigo debe ser menor a 1000")
-	@Column(name = "prod_codigo", nullable = false)
-	private long codigo;
 	
 	@NotBlank(message="Debe tener un Nombre")
 	@Size(min=2,max=100,message = "Debe ingresar de 2 a 100 caracteres")
@@ -63,77 +59,118 @@ public class Producto {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Producto(Long id, int codigo, String nombre, double precio, String marca, int stock, Compra compra) {
+	/**
+	 * @param id
+	 * @param nombre
+	 * @param precio
+	 * @param marca
+	 * @param stock
+	 * @param compras
+	 */
+	public Producto(Long id,
+			String nombre,
+			double precio,
+			String marca,
+			int stock,
+			List<Compra> compras) {
 		super();
 		this.id = id;
-		this.codigo = codigo;
 		this.nombre = nombre;
 		this.precio = precio;
 		this.marca = marca;
 		this.stock = stock;
-
+		this.compras = compras;
 	}
 
-	// Setters and getters
-	
+	/**
+	 * @return the id
+	 */
 	public Long getId() {
 		return id;
 	}
 
+	/**
+	 * @param id the id to set
+	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-
-
-	
-	public long getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(long codigo) {
-		this.codigo = codigo;
-	}
-
+	/**
+	 * @return the nombre
+	 */
 	public String getNombre() {
 		return nombre;
 	}
 
+	/**
+	 * @param nombre the nombre to set
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
+	/**
+	 * @return the precio
+	 */
 	public double getPrecio() {
 		return precio;
 	}
 
+	/**
+	 * @param precio the precio to set
+	 */
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
 
+	/**
+	 * @return the marca
+	 */
 	public String getMarca() {
 		return marca;
 	}
 
+	/**
+	 * @param marca the marca to set
+	 */
 	public void setMarca(String marca) {
 		this.marca = marca;
 	}
 
+	/**
+	 * @return the stock
+	 */
 	public int getStock() {
 		return stock;
 	}
 
+	/**
+	 * @param stock the stock to set
+	 */
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
-	// to String
+
+	/**
+	 * @return the compras
+	 */
+	public List<Compra> getCompras() {
+		return compras;
+	}
+
+	/**
+	 * @param compras the compras to set
+	 */
+	public void setCompras(List<Compra> compras) {
+		this.compras = compras;
+	}
 
 	@Override
 	public String toString() {
-		return "Producto [id=" + id + ", codigo=" + codigo + ", nombre=" + nombre + ", precio=" + precio + ", marca="
-				+ marca + ", stock=" + stock + "]";
+		return "Producto [id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", marca=" + marca + ", stock="
+				+ stock + ", compras=" + compras + "]";
 	}
-	
-	
+
 	
 }
