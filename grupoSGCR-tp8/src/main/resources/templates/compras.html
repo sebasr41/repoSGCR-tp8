@@ -57,7 +57,7 @@
 			    <tbody>
 			      <tr th:each="comp : ${compra}">
                         <td th:text="${comp.id}"></td>
-                        <td th:text="${comp.producto.codigo}"></td>
+                        <td th:text="${comp.producto.id}"></td>
                         <td th:text="${comp.producto.nombre}"></td>
                         <td th:text=" '$ ' + ${comp.producto.precio}"></td>
                         <td th:text="${comp.producto.marca}"></td>
